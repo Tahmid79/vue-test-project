@@ -19,8 +19,8 @@
         <p class="list-text">{{ items?.length }} people in the list</p>
       </tr>
       <tr>
-        <td>
-          <th width="40%" class="column-header cell-size">Email</th>
+        <td class="no-right-border">
+          <th width="45%" class="column-header cell-size">Email</th>
           <th width="10%" class="column-header cell-size">Potatoes</th>
           <th width="10%" class="column-header cell-size">Tags</th>
           <th width="20%" class="column-header cell-size">Name</th>
@@ -265,6 +265,9 @@ tr:hover {
   margin-bottom: 10px;
 }
 
+.no-right-border{
+  border-right: 0px !important;
+}
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
