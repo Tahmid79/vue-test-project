@@ -33,7 +33,7 @@
           </v-row>
 
           <small
-            v-if="numPeople < 3 || numPeople > 100"
+            v-if="numPeople < 20 || numPeople > 100"
             class="text-caption text-medium-emphasis error-msg"
             >Number should be between 20 and 100</small
           >
@@ -54,12 +54,12 @@
 
           <v-btn
             class="save-button"
-            :class="{ 'disabled-button': numPeople < 3 || numPeople > 100 }"
+            :class="{ 'disabled-button': numPeople < 20 || numPeople > 100 }"
             color="primary"
             text="Start"
             variant="plain"
             @click="saveNumber()"
-            :disabled="numPeople < 3 || numPeople > 100 || !numPeople"
+            :disabled="numPeople < 20 || numPeople > 100 || !numPeople"
           ></v-btn>
         </v-card-actions>
       </v-card>
