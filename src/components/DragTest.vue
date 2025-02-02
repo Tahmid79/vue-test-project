@@ -30,9 +30,9 @@
       <tr>
         <td class="no-right-border">
           <th width="40%" class="column-header cell-size">Email</th>
-          <th width="10%" class="column-header cell-size">Potatoes</th>
-          <th width="10%" class="column-header cell-size">Tags</th>
-          <th width="20%" class="column-header cell-size">Name</th>
+          <th width="15%" class="column-header cell-size">Potatoes</th>
+          <th width="20%" class="column-header cell-size">Tags</th>
+          <th width="15%" class="column-header cell-size">Name</th>
           <th width="20%" class="column-header cell-size">Location</th>
         </td>
       </tr>
