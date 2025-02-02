@@ -10,6 +10,9 @@
     </tbody>
   </table>
   
+  <div class="timer-height">
+    <Timer  v-if="items?.length > 0" />
+  </div>  
   <table v-if="items?.length > 0" class="draggable-container">
     <thead class="header-container">
       <tr class="table-top-segment" style="display: flex; justify-content: end">
@@ -78,6 +81,7 @@
 import { faker } from "@faker-js/faker";
 import { ref } from "vue";
 import draggable from "vuedraggable";
+import Timer from "./Timer.vue";
 
 const items = ref<any[]>([]);
 const ex4 = ref();
@@ -254,6 +258,11 @@ tr:hover {
 
 .empty-text{
   text-align: center;
+}
+
+.timer-height{
+  height: 40px;
+  margin-bottom: 10px;
 }
 
 
