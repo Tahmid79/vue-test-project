@@ -14,7 +14,6 @@
 <script setup lang="ts">
 import { onMounted, ref, nextTick } from "vue";
 import DialogTest from "../components/DialogTest.vue";
-import Table from "../components/Table.vue";
 import DragTest from "../components/DragTest.vue";
 
 const tableRef = ref<typeof Table | null>(null); // Type the ref as Table or null
