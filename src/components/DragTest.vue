@@ -31,7 +31,7 @@
         <td class="no-right-border">
           <th width="40%" class="column-header cell-size">Email</th>
           <th width="5%" class="column-header cell-size">Potatoes</th>
-          <th width="15%" class="column-header cell-size">Tags</th>
+          <th width="15%" class="column-header cell-size" style="text-align: center;" >Tags</th>
           <th width="20%" class="column-header cell-size">Full name</th>
           <th width="20%" class="column-header cell-size">Location</th>
         </td>
