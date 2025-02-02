@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar class="d-flex justify-space-between" :elevation="2">
+    <v-app-bar class="d-flex justify-space-between">
       <v-app-bar-title class="mx-5">Sorting Training System</v-app-bar-title>
       <!-- <v-btn> Button </v-btn> -->
       <DialogTest @number-event="handleNumberEvent" />
@@ -42,4 +42,8 @@ function handleNumberEvent(event: any) {
 // });
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+:deep(.v-toolbar-title) {
+  font-weight: bold;
+}
+</style>

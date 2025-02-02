@@ -3,10 +3,9 @@
     <v-dialog v-model="dialog" max-width="600">
       <template v-slot:activator="{ props: activatorProps }">
         <v-btn
-          class="text-none font-weight-regular"
-          prepend-icon="mdi-account"
-          text="Edit Profile"
-          variant="tonal"
+          class="sorting-button"
+          text="Start sorting!"
+          variant="plain"
           v-bind="activatorProps"
         ></v-btn>
       </template>
@@ -130,6 +129,18 @@ function saveNumber() {
   opacity: 1;
   font-weight: bold;
   font-size: 12px;
+  opacity: 1;
+}
+
+// button style
+
+.sorting-button {
+  background-color: rgba(255, 141, 0, 1);
+  height: 54px;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  margin-right: 24px;
   opacity: 1;
 }
 </style>

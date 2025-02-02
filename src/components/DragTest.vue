@@ -6,11 +6,11 @@
       </tr>
       <tr>
         <td>
-          <th width="40%" class="column-header">Email</th>
-          <th width="10%" class="column-header">Potatoes</th>
-          <th width="10%" class="column-header">Tags</th>
-          <th width="20%" class="column-header">Name</th>
-          <th width="20%" class="column-header">Location</th>
+          <th width="40%" class="column-header cell-size">Email</th>
+          <th width="10%" class="column-header cell-size">Potatoes</th>
+          <th width="10%" class="column-header cell-size">Tags</th>
+          <th width="20%" class="column-header cell-size">Name</th>
+          <th width="20%" class="column-header cell-size">Location</th>
         </td>
       </tr>
     </thead>
@@ -46,12 +46,12 @@
                 :value="element.checked"
                 @click="element.checked = !element.checked"
               />
-              <span>{{ element.email }}</span>
+              <span>{{ element.email }}</span>              
             </td>
-            <td width="10%">{{ element.potatoes }}</td>
-            <td width="10%">{{ element.tags }}</td>
-            <td width="20%">{{ element.fullName }}</td>
-            <td width="20%">{{ element.location }}</td>
+            <td class="cell-size" width="10%">{{ element.potatoes }}</td>
+            <td class="cell-size" width="10%">{{ element.tags }}</td>
+            <td class="cell-size" width="20%">{{ element.fullName }}</td>
+            <td class="cell-size" width="20%">{{ element.location }}</td>
           </tr>
         </template>
       </draggable>
@@ -135,8 +135,7 @@ defineExpose({
 }
 
 th,
-td {
-  padding: 12px 16px;
+td {  
   text-align: left;
   border-bottom: 1px solid #ddd;
   word-wrap: break-word;
@@ -173,7 +172,7 @@ tr:hover {
 }
 
 .item-content td {
-  padding: 10px 15px;
+  // padding: 10px 15px;
   font-size: 0.95rem;
 }
 
@@ -181,15 +180,21 @@ tr:hover {
   font-weight: 600;
 }
 
+.cell-size{
+  height: 32px;
+  padding: 8px;
+}
+
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .draggable-container {
     width: 100%;
   }
 
-  th,
-  td {
-    padding: 10px;
-  }
+  // th,
+  // td {
+  //   padding: 10px;
+  // }
 }
 </style>
