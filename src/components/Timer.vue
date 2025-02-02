@@ -1,10 +1,10 @@
 <template>
   <div class="countdown-container">
     <p class="countdown-text">{{ countDownText }}</p>
-    <v-btn @click="resetTimer">Reset Timer</v-btn>
-    <!-- Button to reset the timer -->
+    <!-- <v-btn @click="resetTimer">Reset Timer</v-btn>
+    Button to reset the timer
     <v-btn @click="stopTimer">Stop Timer</v-btn>
-    <!-- Button to stop the timer -->
+    Button to stop the timer -->
   </div>
 </template>
 
@@ -50,6 +50,12 @@ const stopTimer = () => {
 };
 
 startTimer(); // Start the timer when the page loads
+
+defineExpose({
+  startTimer,
+  resetTimer,
+  stopTimer
+});
 </script>
 
 <style lang="scss" scoped>

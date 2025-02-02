@@ -11,8 +11,17 @@
   </table>
   
   <div class="timer-height">
-    <Timer  v-if="items?.length > 0" />
-  </div>  
+    <Timer ref="timerComponentRef" v-if="items?.length > 0" />
+  </div>
+  
+  <div v-if="showSuccess" class="success-segment my-4">
+    <div class="success-inner-segment">
+      <h1 class="success-text" >Success!</h1>
+      <p class="success-subtitle">Your score is 100</p>
+    </div>
+    
+  </div>
+  
   <table v-if="items?.length > 0" class="draggable-container">
     <thead class="header-container">
       <tr class="table-top-segment" style="display: flex; justify-content: end">
@@ -75,17 +84,21 @@ import Timer from "./Timer.vue";
 
 const items = ref<any[]>([]);
 const ex4 = ref();
+const showSuccess = ref(false);
+let timerComponentRef = ref<typeof Timer | null>(null);
 
-const isSortedByPotatoes = (arr: any[]): boolean => {
-  if(!arr){return false;}
-  if(arr.length == 1){return true;}
+const isSortedByPotatoesDescending = (arr: any[]): boolean => {
+  if (!arr) return false;
+  if (arr.length <= 1) return true;
+
   for (let i = 1; i < arr.length; i++) {
-    if (arr[i].potatoes < arr[i - 1].potatoes) {
+    if (arr[i].potatoes > arr[i - 1].potatoes) {
       return false;
     }
   }
   return true;
 };
+
 
 function shuffle(array: any[]) {
   let currentIndex = array.length;
@@ -104,6 +117,10 @@ function shuffle(array: any[]) {
 }
 
 const generateData = (num: number) => {
+  if(timerComponentRef?.value){
+    timerComponentRef?.value?.resetTimer();
+  }
+
   const newItems: any[] = [];
 
   let potatoesCount = 1;
@@ -135,9 +152,17 @@ const dragStart = () => {
 
 const dragEnd = () => {
   // console.log(items.value);
-  const isSorted = isSortedByPotatoes(items.value);
+  const isSorted = isSortedByPotatoesDescending(items.value);
   if(isSorted){
-    alert('Success');
+    // alert('Success');
+    showSuccess.value = true;
+    setTimeout(()=> {
+      showSuccess.value = false;
+      items.value = [];
+      if(timerComponentRef?.value){
+        timerComponentRef?.value?.stopTimer();
+      }
+    }, 2000);
   }
   console.log("Drag ended");
 };
@@ -284,11 +309,39 @@ tr:hover {
 
 .timer-height{
   height: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .no-right-border{
   border-right: 0px !important;
+}
+
+.success-segment{
+  width: 100%;
+  background-color: lightgreen;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.success-inner-segment{
+
+}
+
+.success-text{
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.success-subtitle{
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 /* Responsive Design */
