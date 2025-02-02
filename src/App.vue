@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <v-app>
+      <v-main>
+        <RouterView />
+      </v-main>
+    </v-app>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { RouterView } from "vue-router";
+</script>
+
+<style scoped lang="scss"></style>
