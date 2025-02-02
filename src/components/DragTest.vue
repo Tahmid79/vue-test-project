@@ -28,17 +28,7 @@
         </td>
       </tr>
     </thead>
-
-    <!-- <thead>
-      
-      <tr>
-        <th class="column-header">Email</th>
-        <th class="column-header">Potatoes</th>
-        <th class="column-header">Tags</th>
-        <th class="column-header">Name</th>
-        <th class="column-header">Location</th>
-      </tr>
-    </thead> -->
+    
     <tbody>
       <draggable
         v-model="items"
@@ -86,6 +76,33 @@ import Timer from "./Timer.vue";
 const items = ref<any[]>([]);
 const ex4 = ref();
 
+const isSortedByPotatoes = (arr: any[]): boolean => {
+  if(!arr){return false;}
+  if(arr.length == 1){return true;}
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].potatoes < arr[i - 1].potatoes) {
+      return false;
+    }
+  }
+  return true;
+};
+
+function shuffle(array: any[]) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+
 const generateData = (num: number) => {
   const newItems: any[] = [];
 
@@ -105,7 +122,7 @@ const generateData = (num: number) => {
 
     newItems.push(item);
   }
-
+  shuffle(newItems);
   items.value = newItems;
 };
 
@@ -117,6 +134,11 @@ const dragStart = () => {
 };
 
 const dragEnd = () => {
+  // console.log(items.value);
+  const isSorted = isSortedByPotatoes(items.value);
+  if(isSorted){
+    alert('Success');
+  }
   console.log("Drag ended");
 };
 
