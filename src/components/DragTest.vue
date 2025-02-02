@@ -133,6 +133,14 @@ defineExpose({
   // width: 20%;
   // height: 48px;
   border-bottom: none;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(85, 85, 85, 1);
 }
 
 th,
