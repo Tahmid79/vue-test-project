@@ -1,5 +1,16 @@
 <template>
-  <table class="draggable-container">
+  
+  <table class="draggable-container empty-table" v-if="items?.length === 0">    
+    <tbody>
+      <tr>
+        <td align="center">
+          <h1 class="mx-32 empty-text">No data available</h1>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table v-if="items?.length > 0" class="draggable-container">
     <thead class="header-container">
       <tr class="table-top-segment" style="display: flex; justify-content: end">
         <p class="list-text">{{ items?.length }} people in the list</p>
@@ -95,7 +106,7 @@ const generateData = (num: number) => {
 };
 
 // Generate 12 items for the list
-generateData(12);
+// generateData(12);
 
 const dragStart = () => {
   console.log("Drag started");
@@ -234,7 +245,17 @@ tr:hover {
     color: rgba(85, 85, 85, 1);
     margin: auto;
     width: 100%;
-  }
+}
+
+.empty-table{
+  width: 90%;
+  height: 200px;
+}
+
+.empty-text{
+  text-align: center;
+}
+
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
