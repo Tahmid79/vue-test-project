@@ -29,7 +29,7 @@
       </tr>
       <tr>
         <td class="no-right-border">
-          <th width="45%" class="column-header cell-size">Email</th>
+          <th width="40%" class="column-header cell-size">Email</th>
           <th width="10%" class="column-header cell-size">Potatoes</th>
           <th width="10%" class="column-header cell-size">Tags</th>
           <th width="20%" class="column-header cell-size">Name</th>
@@ -53,6 +53,7 @@
           >
             <td width="40%">
               <input
+                class="custom-checkbox"
                 type="checkbox"
                 id="email-checkbox"
                 name="vehicle1"
@@ -342,6 +343,38 @@ tr:hover {
   color: white;
   margin: 0;
   padding: 0;
+}
+
+// Checkbox Styling
+
+.custom-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  vertical-align: middle;
+}
+
+.custom-checkbox:checked {
+  background-color: orange;
+  border-color: orange;
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 /* Responsive Design */
