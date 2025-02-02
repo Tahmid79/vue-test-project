@@ -46,10 +46,14 @@
                 :value="element.checked"
                 @click="element.checked = !element.checked"
               />
-              <span>{{ element.email }}</span>              
+              <span class="email-text">{{ element.email }}</span>              
             </td>
             <td class="cell-size" width="10%">{{ element.potatoes }}</td>
-            <td class="cell-size" width="10%">{{ element.tags }}</td>
+            <td class="cell-size" width="10%">
+              <div class="customer-tag">
+                <p class="customer-text">{{ element.tags }}</p>
+              </div>
+            </td>
             <td class="cell-size" width="20%">{{ element.fullName }}</td>
             <td class="cell-size" width="20%">{{ element.location }}</td>
           </tr>
@@ -78,7 +82,7 @@ const generateData = (num: number) => {
       potatoes: potatoesCount,
       fullName: faker.person.fullName(),
       location: faker.location.country(),
-      tags: "Customer",
+      tags: "Customers",
       checked: false
     };
 
@@ -194,6 +198,43 @@ tr:hover {
   padding: 8px;
 }
 
+.email-text{
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 8px;
+}
+
+#email-checkbox{  
+}
+
+.customer-tag{
+  width: 84px;
+  height: 28px;
+  gap: 0px;
+  border-radius: 16px;
+  opacity: 0px;
+  background: rgba(238, 238, 238, 1);
+  display: flex;
+}
+
+.customer-text{
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(85, 85, 85, 1);
+    margin: auto;
+    width: 100%;
+  }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
