@@ -24,6 +24,7 @@
                 v-model="numPeople"
                 required
                 variant="outlined"
+                type="number"
               ></v-text-field>
             </v-col>
 
