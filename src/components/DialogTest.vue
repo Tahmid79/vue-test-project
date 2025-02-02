@@ -31,9 +31,11 @@
             </v-col> -->
           </v-row>
 
-          <!-- <small class="text-caption text-medium-emphasis"
-            >*indicates required field</small
-          > -->
+          <small
+            v-if="numPeople < 20 || numPeople > 100"
+            class="text-caption text-medium-emphasis error-msg"
+            >Number should be between 20 and 100</small
+          >
         </v-card-text>
 
         <hr class="divider-modal" />
@@ -51,10 +53,12 @@
 
           <v-btn
             class="save-button"
+            :class="{ 'disabled-button': numPeople < 20 || numPeople > 100 }"
             color="primary"
             text="Start"
             variant="plain"
             @click="saveNumber()"
+            :disabled="numPeople < 20 || numPeople > 100 || !numPeople"
           ></v-btn>
         </v-card-actions>
       </v-card>
@@ -65,7 +69,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-let numPeople = ref<any>();
+let numPeople = ref<any>(null);
 let dialog = ref<any>();
 
 const emit = defineEmits(["number-event"]);
@@ -132,6 +136,11 @@ function saveNumber() {
   opacity: 1;
 }
 
+.disabled-button {
+  background-color: gray;
+  opacity: 0.5;
+}
+
 // button style
 
 .sorting-button {
@@ -142,5 +151,9 @@ function saveNumber() {
   font-size: 15px;
   margin-right: 24px;
   opacity: 1;
+}
+
+.error-msg {
+  color: red;
 }
 </style>
