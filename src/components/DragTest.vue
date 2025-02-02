@@ -64,8 +64,10 @@
             </td>
             <td class="cell-size" width="10%">{{ element.potatoes }}</td>
             <td class="cell-size" width="10%">
-              <div class="customer-tag">
-                <p class="customer-text">{{ element.tags }}</p>
+              <div class="tag-cell">
+                <div v-for="tag of element.tags" class="customer-tag">
+                <p class="customer-text">{{ tag }}</p>
+              </div>
               </div>
             </td>
             <td class="cell-size" width="20%">{{ element.fullName }}</td>
@@ -132,9 +134,15 @@ const generateData = (num: number) => {
       potatoes: potatoesCount,
       fullName: faker.person.fullName(),
       location: faker.location.country(),
-      tags: "Customers",
+      tags: ["Customers"],
       checked: false
     };
+    
+    const randNum = Math.random();
+
+    if(randNum >= 0.8){
+      item.tags.push("VIP");
+    }
 
     potatoesCount += 1;
 
@@ -145,7 +153,7 @@ const generateData = (num: number) => {
 };
 
 // Generate 12 items for the list
-// generateData(12);
+generateData(12);
 
 const dragStart = () => {
   console.log("Drag started");
@@ -277,7 +285,9 @@ tr:hover {
 }
 
 .customer-tag{
-  width: 84px;
+  width: fit-content;
+  padding-left: 12px;
+  padding-right: 12px;
   height: 28px;
   gap: 0px;
   border-radius: 16px;
@@ -375,6 +385,11 @@ tr:hover {
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.tag-cell{
+  display: flex;
+  column-gap: 6px;
 }
 
 /* Responsive Design */

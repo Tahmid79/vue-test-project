@@ -11,13 +11,13 @@
         ></v-btn>
       </template>
 
-      <v-card title="How many people">
+      <v-card title="How many people?">
         <hr class="divider-modal" />
         <v-card-text>
           <v-row dense>
             <v-col cols="12" md="12" sm="6">
               <p class="number-label">
-                Enter a number of how many people you want to see in the list
+                Enter a number of how many people you want to see in the list.
               </p>
               <v-text-field
                 class="number-input"
