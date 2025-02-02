@@ -153,7 +153,7 @@ const generateData = (num: number) => {
 };
 
 // Generate 12 items for the list
-generateData(12);
+// generateData(12);
 
 const dragStart = () => {
   console.log("Drag started");
