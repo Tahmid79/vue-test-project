@@ -1,14 +1,31 @@
 <template>
   <table class="draggable-container">
-    <tbody>
-      <tr>
-        <th>Email</th>
-        <th>Potatoes</th>
-        <th>Tags</th>
-        <th>Name</th>
-        <th>Location</th>
+    <thead class="header-container">
+      <tr class="table-top-segment" style="display: flex; justify-content: end">
+        <p class="list-text">{{ items?.length }} people in the list</p>
       </tr>
+      <tr>
+        <td>
+          <th width="40%" class="column-header">Email</th>
+          <th width="10%" class="column-header">Potatoes</th>
+          <th width="10%" class="column-header">Tags</th>
+          <th width="20%" class="column-header">Name</th>
+          <th width="20%" class="column-header">Location</th>
+        </td>
+      </tr>
+    </thead>
 
+    <!-- <thead>
+      
+      <tr>
+        <th class="column-header">Email</th>
+        <th class="column-header">Potatoes</th>
+        <th class="column-header">Tags</th>
+        <th class="column-header">Name</th>
+        <th class="column-header">Location</th>
+      </tr>
+    </thead> -->
+    <tbody>
       <draggable
         v-model="items"
         item-key="fullName"
@@ -16,19 +33,25 @@
         @end="dragEnd"
         :group="{ name: 'items', pull: 'clone', put: true }"
       >
-        <template #item="{ element }">
-          <tr class="draggable-item item-content">
-            <!-- <td>Email: {{ element.email }}</td>
-            <td>Potatoes: {{ element.potatoes }}</td>
-            <td>Tags: {{ element.tags }}</td>
-            <td>Name: {{ element.fullName }}</td>            
-            <td>Location: {{ element.location }}</td> -->
-
-            <td>{{ element.email }}</td>
-            <td>{{ element.potatoes }}</td>
-            <td>{{ element.tags }}</td>
-            <td>{{ element.fullName }}</td>
-            <td>{{ element.location }}</td>
+        <template style="width: 100%" #item="{ element }">
+          <tr
+            class="draggable-item item-content"
+            :class="{ 'checked-hover-color': element.checked }"
+          >
+            <td width="40%">
+              <input
+                type="checkbox"
+                id="email-checkbox"
+                name="vehicle1"
+                :value="element.checked"
+                @click="element.checked = !element.checked"
+              />
+              <span>{{ element.email }}</span>
+            </td>
+            <td width="10%">{{ element.potatoes }}</td>
+            <td width="10%">{{ element.tags }}</td>
+            <td width="20%">{{ element.fullName }}</td>
+            <td width="20%">{{ element.location }}</td>
           </tr>
         </template>
       </draggable>
@@ -39,10 +62,10 @@
 <script setup lang="ts">
 import { faker } from "@faker-js/faker";
 import { ref } from "vue";
-import draggable from "vuedraggable"; // Import vuedraggable correctly
+import draggable from "vuedraggable";
 
-// Fake data for the items
 const items = ref<any[]>([]);
+const ex4 = ref();
 
 const generateData = (num: number) => {
   const newItems: any[] = [];
@@ -55,7 +78,8 @@ const generateData = (num: number) => {
       potatoes: potatoesCount,
       fullName: faker.person.fullName(),
       location: faker.location.country(),
-      tags: "Customer"
+      tags: "Customer",
+      checked: false
     };
 
     potatoesCount += 1;
@@ -69,7 +93,6 @@ const generateData = (num: number) => {
 // Generate 12 items for the list
 generateData(12);
 
-// Start and end drag events
 const dragStart = () => {
   console.log("Drag started");
 };
@@ -83,53 +106,90 @@ defineExpose({
 });
 </script>
 
-<style scoped>
-.draggable-container {
-  width: 80%;
-  margin: 0 auto;
+<style scoped lang="scss">
+.table-top-segment {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  padding-right: 16px;
 }
 
-.draggable-item {
-  padding: 15px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  transition: background-color 0.2s ease;
-  cursor: grab; /* Add cursor style to indicate the item is draggable */
-}
-
-.draggable-item:active {
-  cursor: grabbing; /* Add grabbing cursor when dragging */
-}
-
-.draggable-item:hover {
-  background-color: #e0e0e0;
-}
-
-.item-content h3 {
-  font-size: 1.2rem;
+.list-text {
   font-weight: bold;
 }
 
-.item-content p {
-  margin: 5px 0;
-  font-size: 0.9rem;
+.draggable-container {
+  // width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  /* table-layout: auto; */
 }
 
-table {
-  border: 1px solid #dddddd;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.102);
+.column-header {
+  // width: auto;
+  // width: 20%;
+  // height: 48px;
+  border-bottom: none;
 }
 
+th,
 td {
-  width: 20%;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-tr {
-  border: 1px solid black;
-  height: 48px;
+td:first-child {
+  border-right: 1px solid #ddd;
+}
+
+th {
+  // background-color: #f3f3f3;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+.checked-hover-color {
+  background-color: rgba(245, 245, 245, 1) !important;
+}
+
+.draggable-item {
+  transition: background-color 0.2s;
+  cursor: move;
+  display: table-row;
   width: 100%;
+  table-layout: auto;
+}
+
+.draggable-item:hover {
+  background-color: #e6f7ff;
+}
+
+.item-content td {
+  padding: 10px 15px;
+  font-size: 0.95rem;
+}
+
+.item-content td:first-child {
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .draggable-container {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
 }
 </style>
