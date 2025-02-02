@@ -1,19 +1,12 @@
 <template>
   <div>
-    <!-- <v-app-bar class="d-flex justify-space-between"> </v-app-bar> -->
-
     <div class="top-segment">
       <h1 class="title">Sorting Training System</h1>
-      <!-- <v-btn> Button </v-btn> -->
       <DialogTest @number-event="handleNumberEvent" />
     </div>
   </div>
 
   <div>
-    <!-- <DialogTest @number-event="handleNumberEvent" /> -->
-
-    <!-- <Table ref="tableRef" /> -->
-
     <DragTest ref="tableRef" />
   </div>
 </template>
@@ -51,7 +44,7 @@ function handleNumberEvent(event: any) {
   justify-content: space-between;
   align-items: center; /* Align items along the cross axis */
   margin: 12px 16px;
-  height: 50px;
+  height: 60px;
 }
 
 .title {

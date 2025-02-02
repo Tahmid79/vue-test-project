@@ -136,7 +136,7 @@ function saveNumber() {
 
 .sorting-button {
   background-color: rgba(255, 141, 0, 1);
-  height: 54px;
+  height: 54px !important;
   border-radius: 5px;
   color: white;
   font-size: 15px;
