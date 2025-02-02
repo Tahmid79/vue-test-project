@@ -45,4 +45,17 @@ function handleNumberEvent(event: any) {
 :deep(.v-toolbar-title) {
   font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+  .top-segment {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    h1 {
+      line-height: 1.2em;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+  }
+}
 </style>
