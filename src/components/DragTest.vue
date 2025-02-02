@@ -368,6 +368,7 @@ tr:hover {
   display: inline-block;
   background-color: white;
   vertical-align: middle;
+  margin-left: 12px;
 }
 
 .custom-checkbox:checked {
